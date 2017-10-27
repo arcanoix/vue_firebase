@@ -3,10 +3,9 @@ Vue.component('alerta', {
     template:`
                 <section class="alerta" :class="[tipo, posicion]">
                     <header class="alerta__header">
-                            <slot name="header">
-                                hola
-                            </slot>
-                            
+                           
+                            <a href="#" @click="ocultar">Cerrar</a>
+                                <slot name="header">hola</slot>
                            
                     </header>
                     <div class="alerta__contenido">
@@ -16,13 +15,24 @@ Vue.component('alerta', {
                     </div>
                     <footer class="alerta__footer">
                     <slot name="footer">
-                            footer es este
+                            footer es es
                         </slot>
                     </footer>
-                </section>
-    `
+                </section>`,
+                methods:{
+                    ocultar(){
+                        this.$emit('ocultarw');
+                        //console.log("probando");
+                    }
+                }
 });
 
 new Vue({
-    el: 'main'
+    el: 'main',
+    data:{
+        mostrarExito: false,
+        mostrarError: false,
+        mostrarAdvertencia: false
+    }
+    
 });
